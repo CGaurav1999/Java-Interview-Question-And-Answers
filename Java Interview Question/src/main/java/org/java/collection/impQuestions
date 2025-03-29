@@ -1,0 +1,175 @@
+==============================================
+          JAVA CONCURRENCY - INTERVIEW FAQ
+==============================================
+
+🔹 1. What is Future?
+----------------------------------
+✔ Future (Java 5) represents a pending async computation.
+❌ Blocking get() – Inefficient, must wait for the result.
+❌ No chaining – Cannot combine multiple Future results.
+❌ No exception handling – Requires manual try-catch.
+❌ No manual completion – We cannot complete it manually.
+
+
+🔹 2. What is CompletableFuture?
+----------------------------------
+✔ CompletableFuture (Java 8) is an enhanced Future that supports:
+✅ Non-blocking execution (callbacks instead of get())
+✅ Chaining multiple async tasks
+✅ Exception handling
+✅ Manual completion
+
+📌 Key Features:
+----------------------------------
+➤ (i) Chaining Asynchronous Tasks
+```java
+CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 10)
+    .thenApply(num -> num * 2)
+    .thenApply(num -> num + 5);
+System.out.println("Final Result: " + future.get()); // 25
+```
+
+➤ (ii) Running Tasks in Parallel (thenCombine)
+```java
+CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> 10);
+CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> 20);
+CompletableFuture<Integer> result = future1.thenCombine(future2, (num1, num2) -> num1 + num2);
+System.out.println("Combined Result: " + result.get()); // 30
+```
+
+➤ (iii) Handling Exceptions
+```java
+CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+    if (true) throw new RuntimeException("Error!");
+    return 10;
+}).exceptionally(ex -> {
+    System.out.println("Handled: " + ex.getMessage());
+    return 0;
+});
+System.out.println("Result: " + future.get()); // 0 (fallback)
+```
+
+➤ (iv) Running Multiple Tasks (allOf & anyOf)
+```java
+CompletableFuture<Void> allTasks = CompletableFuture.allOf(
+    CompletableFuture.runAsync(() -> System.out.println("Task 1")),
+    CompletableFuture.runAsync(() -> System.out.println("Task 2")),
+    CompletableFuture.runAsync(() -> System.out.println("Task 3"))
+);
+allTasks.get(); // Wait for all tasks
+System.out.println("All tasks completed.");
+```
+
+
+🔹 3. What is BlockingQueue?
+----------------------------------
+✔ A thread-safe queue that blocks when adding/removing elements under certain conditions.
+✔ Used in producer-consumer problems.
+
+📌 Characteristics:
+✔ Thread Safety – Multiple threads can add/remove elements safely.
+✔ Blocking Behavior –
+   🔸 If full, producer waits for space.
+   🔸 If empty, consumer waits for an element.
+✔ No Null Values allowed.
+✔ Implementations – ArrayBlockingQueue, LinkedBlockingQueue, PriorityBlockingQueue.
+
+
+🔹 4. Difference: BlockingQueue vs. ConcurrentLinkedQueue
+----------------------------------
+📌 **BlockingQueue**
+✔ Supports waiting if empty or full.
+✔ Uses locks/semaphores.
+✔ Suitable for producer-consumer models.
+✔ Can be bounded (e.g., ArrayBlockingQueue) or unbounded.
+
+📌 **ConcurrentLinkedQueue**
+✔ Non-blocking (poll() returns null if empty).
+✔ Uses CAS (Compare-And-Swap) for lock-free operations.
+✔ High-throughput, but no blocking support.
+
+
+🔹 5. Feature Comparison Table
+----------------------------------
+| Feature               | BlockingQueue         | ConcurrentLinkedQueue |
+|-----------------------|----------------------|-----------------------|
+| **Thread Safety**    | ✅ Yes (locks)       | ✅ Yes (lock-free)   |
+| **Blocking Ops**     | ✅ Yes (waits)       | ❌ No (never blocks) |
+| **Locking**          | Uses locks/semaphores | Lock-free (CAS)       |
+| **Performance**      | Slower (locks)        | Faster (lock-free)    |
+| **Use Case**         | Producer-Consumer     | High-throughput       |
+| **Capacity**         | Bounded/unbounded     | Unbounded             |
+| **Null Values**      | ❌ Not allowed        | ❌ Not allowed        |
+
+
+🔹 6. Fail-Fast vs. Fail-Safe Iterators
+----------------------------------
+✔ **Fail-Fast:** Throws ConcurrentModificationException if modified during iteration.
+   (e.g., ArrayList, HashMap)
+✔ **Fail-Safe:** Works on a copy, allowing modification during iteration.
+   (e.g., ConcurrentHashMap, CopyOnWriteArrayList)
+
+
+🔹 7. CopyOnWriteArrayList
+----------------------------------
+✔ CopyOnWriteArrayList creates a new copy on modification.
+✔ Thread-safe but slower for writes.
+✔ Ideal for read-heavy scenarios.
+
+
+🔹 8. ConcurrentSkipListMap in Java
+----------------------------------
+✔ A thread-safe, sorted map alternative to ConcurrentHashMap.
+✔ Uses Skip Lists (O(log n) complexity).
+
+📌 Key Features:
+✔ ✅ Thread-safe (lock-free, CAS-based)
+✔ ✅ Sorted order of keys
+✔ ❌ No null keys allowed
+✔ ✅ Allows null values
+✔ ✅ Best for read-heavy workloads
+
+
+🔹 9. Why is Vector thread-safe but not recommended?
+----------------------------------
+✔ Vector uses synchronized methods, making it slower than ArrayList.
+✔ Alternatives: Collections.synchronizedList() or CopyOnWriteArrayList.
+
+
+🔹 10. How does ReadWriteLock improve performance?
+----------------------------------
+✔ Allows multiple readers but only one writer at a time.
+✔ Ideal for high-read, low-write scenarios.
+
+
+🔹 11. ThreadLocal Variable in Java
+----------------------------------
+✔ Provides thread-local storage (each thread gets its own copy).
+✔ Avoids synchronization issues.
+✔ Use cases: Database connections, user sessions, locale preferences.
+✔ Automatically removed when a thread terminates.
+
+
+🔹 12. What is the Fork/Join framework?
+----------------------------------
+✔ Used for parallel processing.
+✔ Divides tasks into smaller sub-tasks for concurrent execution.
+
+
+🔹 13. How to prevent race conditions in Java Collections?
+----------------------------------
+✔ Use synchronized collections (e.g., Collections.synchronizedList()).
+✔ Use concurrent collections (e.g., ConcurrentHashMap, CopyOnWriteArrayList).
+✔ Use atomic variables (AtomicInteger, AtomicReference).
+
+
+🔹 14. Atomic Variables in Java
+----------------------------------
+✔ Part of java.util.concurrent.atomic.
+✔ Provides lock-free, thread-safe operations using CAS.
+✔ Faster than synchronized blocks.
+✔ Used for counters, flags, references.
+
+
+🚀 **End of Java Concurrency Cheat Sheet** 🚀
+==============================================

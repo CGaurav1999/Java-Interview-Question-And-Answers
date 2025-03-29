@@ -1,0 +1,47 @@
+1. Can a finally block exist without a catch block in Java?
+    Answer: Yes, a finally block can exist without a catch block.
+
+2. What happens if a return statement is used in both the try block and the finally block?
+    Answer: If a return statement is executed in both the try/catch and the finally block,
+    the return statement in the finally block takes precedence.
+    This means the value from the finally block is returned, not the one from the try block.
+
+3. Is it necessary to have a catch block when using a try block in Java?
+    Answer: No, it's not necessary to have a catch block when using a try block.
+    A finally block can be used instead. The finally block ensures that code runs after the try block,
+    regardless of whether an exception is thrown.
+
+4. What happens if an exception is thrown in the finally block?
+    Answer: If an exception is thrown in the finally block, it will override any exception that was thrown in the try block.
+    The exception in the finally block will be propagated instead. However, if there’s a catch block, it can still handle the original exception,
+    and the exception in the finally block will also be thrown.
+
+    Example:
+
+        public void testMethod() {
+            try {
+                throw new IOException("Exception in try block");
+            } finally {
+                throw new ArithmeticException("Exception in finally block");
+            }
+        }
+
+        Output: The ArithmeticException will be thrown, and the IOException will be lost unless it’s handled or logged.
+
+8. What is the behavior when an exception is thrown and caught in the catch block, but the finally block throws another exception?
+    Answer: If an exception is thrown in the finally block after an exception has been caught in the catch block,
+    the exception thrown in the finally block will be propagated and will overshadow the original exception, unless it's handled.
+
+        public void testMethod() {
+            try {
+                throw new IOException("IOException in try");
+            } catch (IOException e) {
+                System.out.println("Caught exception: " + e.getMessage());
+            } finally {
+                throw new ArithmeticException("Exception in finally");
+            }
+        }
+
+        Output: Caught exception: IOException in try
+                Exception in thread "main" java.lang.ArithmeticException: Exception in finally
+

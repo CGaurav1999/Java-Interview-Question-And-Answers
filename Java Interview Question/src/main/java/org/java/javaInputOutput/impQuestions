@@ -1,0 +1,64 @@
+1. What are the main classes for file reading and writing in Java?
+Answer:
+Java provides several classes for file I/O, including:
+FileReader and BufferedReader – for reading character-based files.
+FileWriter and BufferedWriter – for writing character-based files.
+FileInputStream and FileOutputStream – for reading and writing byte-based files.
+
+2. What is the difference between FileReader and BufferedReader?
+Answer:
+FileReader reads a file character by character, which can be inefficient for large files.
+BufferedReader reads the file in chunks (using an internal buffer), improving performance.
+
+
+
+
+3. What is the difference between FileWriter and BufferedWriter?
+Answer:
+
+FileWriter writes character data directly to a file.
+BufferedWriter uses an internal buffer, reducing disk I/O operations for better performance.
+
+try (BufferedWriter bw = new BufferedWriter(new FileWriter("example.txt"))) {
+    bw.write("Hello, World!");
+    bw.newLine();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+5. What is the difference between FileReader/FileWriter and FileInputStream/FileOutputStream?
+Answer:
+
+FileReader/FileWriter → For character-based (text) files.
+FileInputStream/FileOutputStream → For binary files (e.g., images, videos).
+
+try (FileInputStream fis = new FileInputStream("source.txt");
+     FileOutputStream fos = new FileOutputStream("destination.txt")) {
+    byte[] buffer = new byte[1024];
+    int length;
+    while ((length = fis.read(buffer)) > 0) {
+        fos.write(buffer, 0, length);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+How do you append data to a file instead of overwriting it?
+Answer:
+Use FileWriter in append mode:
+try (FileWriter fw = new FileWriter("example.txt", true);
+     BufferedWriter bw = new BufferedWriter(fw)) {
+    bw.write("Appending data");
+    bw.newLine();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+
+
+
+
+

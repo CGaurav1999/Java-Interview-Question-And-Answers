@@ -1,0 +1,59 @@
+1. What is a functional interface in Java?
+Answer:
+A functional interface is an interface that contains only one abstract method but can have multiple default and static methods. It is used in lambda expressions and functional programming in Java.
+
+2. Name some built-in functional interfaces in Java.
+Answer:
+Java provides several built-in functional interfaces, including:
+
+Runnable (from Java 1.0)
+
+Comparable<T> (from Java 1.2)
+
+Consumer<T> (accepts an input, no output)
+
+Supplier<T> (produces a result, no input)
+
+Function<T, R> (accepts one input, returns an output)
+
+Predicate<T> (accepts one input, returns boolean)
+
+BiFunction<T, U, R> (accepts two inputs, returns an output)
+
+3. What is the @FunctionalInterface annotation?
+Answer:
+The @FunctionalInterface annotation is used to indicate that an interface is a functional interface. It is optional but recommended because it ensures that the interface has only one abstract method.
+
+5. How do you implement a functional interface using a lambda expression?
+Answer:
+Lambda expressions provide a concise way to implement a functional interface. Example1 in code:
+
+6. Can a functional interface extend another interface?
+Answer:
+Yes, but it can only inherit one abstract method from the parent interface, otherwise, it will not be a functional interface.
+
+15. What are the advantages of using functional interfaces?
+Answer:
+
+Improved readability – Using lambda expressions makes code cleaner.
+
+Less boilerplate code – No need for anonymous inner classes.
+
+Encourages functional programming – Helps in writing declarative-style code.
+
+Easy integration – Works well with Java Streams API.
+
+Reusability – Functional interfaces like Function<T, R> can be reused in multiple places.
+
+12. How can you chain functional interfaces in Java?
+Answer:
+You can chain functional interfaces using methods like .andThen() and .compose()
+
+
+14. How is the BiFunction<T, U, R> interface different from Function<T, R>?
+Answer:
+
+Function<T, R> takes one input and produces an output.
+
+BiFunction<T, U, R> takes two inputs and produces an output.
+

@@ -1,0 +1,57 @@
+# 🚨 **Errors in Java** 🚨
+
+In Java, **errors** are a special type of `Throwable` object, distinct from **exceptions**, and typically represent **severe problems** that a Java program should not attempt to handle. These are situations that usually occur at the **system level** and are beyond the control of the application code.
+
+Errors indicate serious issues that are generally **non-recoverable** through normal exception handling mechanisms like `try-catch` blocks.
+
+---
+
+### **🔑 Key Characteristics of Errors in Java**:
+1. **System-level issues**:
+   - Errors are typically caused by **conditions outside** the program's control, such as **hardware failure**, **JVM problems**, or **operating system-level issues**.
+
+2. **Non-recoverable**:
+   - Unlike exceptions, **errors cannot be caught** or handled in normal application code. They are **fatal** and indicate that the program cannot continue running safely.
+
+3. **Subclasses of Error**:
+   - Errors in Java are represented by the `Error` class, which is a subclass of `Throwable` (along with `Exception`).
+
+---
+
+### **⚠️ Common Java Errors:**
+
+1. **OutOfMemoryError** 💥:
+   - This error occurs when the JVM has **run out of memory** and cannot allocate new objects.
+   - **Example**: If a program creates too many objects or has **memory leaks**, it can run out of heap space.
+
+2. **StackOverflowError** 🏋️‍♂️:
+   - This error occurs when the **stack for a thread** becomes full, usually due to **deep recursion**.
+   - **Example**: If a recursive method calls itself **infinitely**, it can cause a **StackOverflowError**.
+
+3. **VirtualMachineError** 💻:
+   - This is a superclass of all errors that are thrown by the JVM when there is a **serious problem** with the runtime environment.
+   - This error indicates a **JVM problem**, such as a lack of resources or a bug in the JVM itself.
+
+4. **NoClassDefFoundError** ❌:
+   - This error occurs when the JVM cannot find a class that is required at runtime, usually due to a **missing class file** or an **incorrect classpath**.
+   - **Example**: It can happen if a class was available at compile time but is **missing at runtime**.
+
+---
+
+### **📊 Differences Between Exceptions and Errors**
+
+| **Feature**             | **Exceptions**                                       | **Errors**                                            |
+|-------------------------|------------------------------------------------------|------------------------------------------------------|
+| **Cause**               | Typically caused by **program logic issues** or **recoverable conditions** | Caused by **system-level issues** (e.g., hardware failure) |
+| **Handling**            | Can be **caught** and handled by the program (e.g., using `try-catch`) | Cannot typically be **caught** or recovered from in the program |
+| **Recoverability**      | Can often be **recovered** from by the program      | Usually **non-recoverable** and **fatal**             |
+| **Examples**            | `IOException`, `NullPointerException`, `ArithmeticException` | `OutOfMemoryError`, `StackOverflowError`, `AssertionError` |
+
+---
+
+### **💡 Summary of Errors:**
+- **Errors** are serious conditions typically related to **system-level** issues.
+- They **cannot** be caught or recovered from by normal program logic, unlike **exceptions**.
+- Some common examples of errors are `OutOfMemoryError`, `StackOverflowError`, and `NoClassDefFoundError`.
+
+⚠️ **Key point:** Errors usually indicate that the program cannot continue, and attempting to handle them often leads to **unstable states** in the application.

@@ -1,0 +1,102 @@
+What are Generics in Java?
+Answer:
+Generics in Java allow us to create type-safe classes, interfaces, and methods. They provide compile-time type checking and eliminate the need for explicit type casting.
+
+
+
+What are the benefits of using Generics?
+Answer:
+
+Type safety: Prevents ClassCastException at runtime.
+
+Code reusability: A single class or method can work with multiple data types.
+
+Eliminates explicit casting: No need to manually cast objects.
+
+Can we use primitive types as type parameters in Generics?
+Answer:
+No, Generics only work with reference types. However, Java provides wrapper classes (e.g., Integer, Double) to use primitive types with Generics.
+
+What is type inference in Java Generics?
+Answer:
+Type inference allows the compiler to determine the generic type automatically.
+List<String> list = new ArrayList<>(); // Compiler infers <String>
+
+
+What is the difference between T, E, K, V, and ? in Generics?
+Answer:
+
+T → Type (Generic type parameter)
+E → Element (Used in collections)
+K, V → Key, Value (Used in maps)
+? → Wildcard (Unknown type)
+
+What are bounded type parameters in Generics?
+Answer:
+Bounded type parameters restrict the types that can be used as arguments.
+class Box<T extends Number> { } // Only Number or its subclasses are allowed
+
+
+What is the difference between ? extends T and ? super T?
+Answer:
+
+? extends T → Accepts T or its subtypes (Read-only).
+
+? super T → Accepts T or its supertypes (Allows modification).
+
+List<? extends Number> list1; // Can hold List<Integer>, List<Double>
+List<? super Integer> list2; // Can hold List<Number>, List<Object>
+
+What is the difference between List<Object> and List<?>?
+Answer:
+
+List<Object> → Only allows Object type elements.
+
+List<?> → Can hold any type but is read-only (except for null).
+
+How do you implement a generic class in Java?
+class Box<T> {
+    private T value;
+    public void set(T value) { this.value = value; }
+    public T get() { return value; }
+}
+Box<Integer> intBox = new Box<>();
+
+
+How do you create a generic method?
+public static <T> void print(T item) {
+    System.out.println(item);
+}
+print(10);
+print("Hello");
+
+
+How Type Erasure Works
+During compilation, Java replaces generic types with their raw types and inserts necessary type casts to ensure type safety.
+
+class Box<T> {
+    private T value;
+
+    void setValue(T value) {
+        this.value = value;
+    }
+
+    T getValue() {
+        return value;
+    }
+}
+Example After Type Erasure (Compiled Bytecode)
+class Box {
+    private Object value;
+
+    void setValue(Object value) {
+        this.value = value;
+    }
+
+    Object getValue() {
+        return value;
+    }
+}
+
+
+

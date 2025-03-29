@@ -1,0 +1,53 @@
+********************************************
+              JAVA INTERVIEW QUESTIONS
+********************************************
+
+1️⃣ **What is the difference between JDK, JRE, and JVM?**
+----------------------------------------------------------
+✅ **JDK (Java Development Kit):**
+   - Includes the **JRE** and development tools like the compiler (`javac`), debugger, and JavaDoc.
+
+✅ **JRE (Java Runtime Environment):**
+   - Provides libraries and **JVM** for running Java applications but **does not** include development tools.
+
+✅ **JVM (Java Virtual Machine):**
+   - An abstract machine that executes Java **bytecode** and provides features like **Just-In-Time (JIT) compilation** and **garbage collection**.
+
+
+2️⃣ **Explain the JVM architecture.**
+--------------------------------------
+🛠 **JVM Components:**
+
+- 📌 **ClassLoader**: Loads `.class` files into memory.
+- 📌 **Method Area**: Stores metadata, class structures, and the runtime constant pool.
+- 📌 **Heap**: Stores objects and class instances (**Garbage Collected**).
+- 📌 **Stack**: Stores method frames, local variables, and partial results.
+- 📌 **PC Register**: Stores the current instruction address for each thread.
+- 📌 **Execution Engine**:
+  - 🏁 **Interpreter**: Executes bytecode line by line.
+  - 🚀 **JIT Compiler**: Converts bytecode to native code for performance improvement.
+
+
+3️⃣ **What are the different types of ClassLoaders in JVM?**
+-----------------------------------------------------------
+🔹 **Bootstrap ClassLoader**: Loads core Java classes (`java.lang`, `java.util`).
+🔹 **Extension ClassLoader**: Loads classes from the `ext` directory (`$JAVA_HOME/lib/ext`).
+🔹 **Application ClassLoader**: Loads application-specific classes from the classpath.
+🔹 **Custom ClassLoader**: User-defined ClassLoaders for specific needs.
+
+
+4️⃣ **What is Just-In-Time (JIT) Compilation in JVM?**
+------------------------------------------------------
+🚀 **JIT Compiler** optimizes performance by converting **bytecode** into **native machine code** at runtime.
+
+🔹 **Optimization Techniques:**
+   - ✅ **Inlining**: Replaces method calls with actual method code.
+   - ✅ **Loop Unrolling**: Expands loops to reduce iterations.
+   - ✅ **Dead Code Elimination**: Removes unused code to improve efficiency.
+
+⚡ The **HotSpot JVM** includes both an **Interpreter** and a **JIT compiler** for better performance.
+
+********************************************
+     END OF QUESTIONS
+********************************************
+

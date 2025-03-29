@@ -1,0 +1,163 @@
+📌 **Java Access Modifiers - Interview Questions & Answers**
+
+---
+
+### 1️⃣ What are the different access modifiers in Java?
+📝 **Answer:**
+Java provides four access modifiers:
+- 🔒 **private**: Accessible **only within the same class**.
+- 📦 **default (package-private)**: Accessible **within the same package**.
+- 🛡 **protected**: Accessible **within the same package and subclasses**.
+- 🌍 **public**: Accessible **from anywhere**.
+
+---
+
+### 2️⃣ What is the difference between `private`, `protected`, and `default` access modifiers?
+📝 **Answer:**
+
+| Modifier   | Same Class ✅ | Same Package ✅ | Subclass (Different Package) ✅ | Other Packages ❌ |
+|------------|--------------|---------------|---------------------------------|--------------|
+| **private**   | ✅ Yes | ❌ No | ❌ No | ❌ No |
+| **default**   | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **protected** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
+| **public**    | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+
+---
+
+### 3️⃣ Can a `private` method be overridden in Java?
+📝 **Answer:**
+❌ No, a `private` method **cannot be overridden** because it is not accessible outside the class.
+
+---
+
+### 4️⃣ Can we override a `protected` method outside the package?
+📝 **Answer:**
+✅ Yes, a `protected` method can be overridden **outside the package**, but **only in a subclass**.
+
+```java
+// 📂 package1.Parent.java
+package package1;
+
+public class Parent {
+    protected void display() {
+        System.out.println("Protected Method in Parent");
+    }
+}
+
+// 📂 package2.Child.java
+package package2;
+import package1.Parent;
+
+public class Child extends Parent {
+    @Override
+    protected void display() {
+        System.out.println("Overridden Protected Method in Child");
+    }
+
+    public static void main(String[] args) {
+        Child obj = new Child();
+        obj.display(); // Works fine ✅
+    }
+}
+```
+
+---
+
+### 5️⃣ Can a class be `protected` in Java?
+📝 **Answer:**
+❌ **No**, a **top-level class cannot be protected**. The only allowed access modifiers for a **top-level class** are:
+- 🌍 `public`
+- 📦 `default` (no modifier)
+
+✅ **However, nested classes** *can* be `protected`.
+
+---
+
+### 6️⃣ What happens when we declare a method as `public static`?
+📝 **Answer:**
+- **`public`** → The method is accessible **from anywhere**.
+- **`static`** → The method belongs **to the class** and can be called **without an instance**.
+
+```java
+public class Example {
+    public static void show() {
+        System.out.println("Public Static Method");
+    }
+
+    public static void main(String[] args) {
+        Example.show(); // No need to create an object ✅
+    }
+}
+```
+
+---
+
+### 7️⃣ What happens if we don't specify any access modifier?
+📝 **Answer:**
+If **no access modifier** is specified, the member/class has **default (package-private) access**, meaning it is accessible **only within the same package**.
+
+```java
+class DefaultAccess {
+    void show() {
+        System.out.println("Package-private method");
+    }
+}
+```
+
+---
+
+### 8️⃣ Can we declare a constructor as `protected`?
+📝 **Answer:**
+✅ **Yes**, a constructor can be `protected`. It is mainly used when we want a class to **allow inheritance but prevent direct instantiation**.
+
+```java
+class Parent {
+    protected Parent() {  // Protected constructor
+        System.out.println("Protected Constructor");
+    }
+}
+
+class Child extends Parent {
+    public Child() {
+        super(); // Allowed in subclass ✅
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Parent obj = new Parent(); // ❌ Not allowed (protected constructor)
+        Child obj = new Child(); // ✅ Allowed
+    }
+}
+```
+
+---
+
+### 9️⃣ Can a `final` method be `private`?
+📝 **Answer:**
+✅ **Yes**, a method can be both `final` and `private`. However, since **private methods are not inherited**, `final` is redundant.
+
+```java
+class Example {
+    private final void show() {
+        System.out.println("Private Final Method");
+    }
+}
+```
+
+---
+
+### 🔟 What is the access level of an interface method by default?
+📝 **Answer:**
+All **interface methods** are **`public` and `abstract`** by default.
+
+```java
+interface Example {
+    void show(); // Equivalent to "public abstract void show();"
+}
+```
+
+---
+
+📌 **Hope this helps with your interview preparation! 🚀**
+

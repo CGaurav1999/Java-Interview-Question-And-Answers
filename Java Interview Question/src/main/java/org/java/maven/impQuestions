@@ -1,0 +1,156 @@
+==============================
+        ✨ MAVEN INTERVIEW QUESTIONS ✨
+==============================
+
+
+1️⃣ **What is Maven?**
+**Answer:**
+Maven is a **build automation tool** used primarily for **Java projects**. It simplifies:
+✅ Dependency Management
+✅ Project Configuration
+✅ Standardized Build Process
+
+
+2️⃣ **What are the main features of Maven?**
+**Answer:**
+✔️ Dependency Management (Handles libraries automatically)
+✔️ Build Lifecycle Management
+✔️ Project Structure Standardization
+✔️ Plugins for Automation
+✔️ Supports Multi-Module Projects
+✔️ Integration with CI/CD tools like **Jenkins**
+
+
+3️⃣ **What is a POM file in Maven?**
+**Answer:**
+POM (**Project Object Model**) is an XML file (`pom.xml`) that contains:
+📌 Dependencies
+📌 Plugins
+📌 Build Settings
+
+
+4️⃣ **What are the phases in the Maven build lifecycle?**
+**Answer:**
+Maven follows a **default build lifecycle** with these phases:
+
+🔹 **validate** → Ensures the project is correct.
+🔹 **compile** → Compiles source code.
+🔹 **test** → Runs unit tests.
+🔹 **package** → Creates JAR/WAR.
+🔹 **verify** → Runs integration tests.
+🔹 **install** → Installs package in local repository.
+🔹 **deploy** → Uploads package to a remote repository.
+
+
+5️⃣ **What are Maven repositories?**
+**Answer:**
+Maven uses repositories to **store and retrieve dependencies**:
+📍 **Local Repository** (`~/.m2/repository`) → Caches dependencies for offline use.
+📍 **Central Repository** (Maven Central) → Default public repository.
+📍 **Remote Repository** → Custom repositories (e.g., **Nexus, Artifactory**).
+
+
+6️⃣ **What is the scope of dependencies in Maven?**
+**Answer:**
+Maven provides different **dependency scopes**:
+🔸 **compile** (default) → Available at all stages.
+🔸 **provided** → Required for compilation but provided by the runtime (e.g., `javax.servlet-api`).
+🔸 **runtime** → Not required for compilation but needed at runtime.
+🔸 **test** → Available only during testing.
+
+
+7️⃣ **What is the difference between SNAPSHOT and RELEASE versions in Maven?**
+**Answer:**
+📌 **SNAPSHOT** → A development version that keeps changing (e.g., `1.0.0-SNAPSHOT`).
+📌 **RELEASE** → A stable version (e.g., `1.0.0`).
+
+
+8️⃣ **What are Maven plugins?**
+**Answer:**
+Maven **plugins** extend its functionality. Two types:
+🔹 **Build Plugins** → Execute during build lifecycle (e.g., `maven-compiler-plugin`).
+🔹 **Reporting Plugins** → Generate reports (e.g., `maven-surefire-plugin`).
+
+
+9️⃣ **How do you skip tests in Maven?**
+**Answer:**
+✅ Use command line:
+```bash
+mvn package -DskipTests
+```
+✅ Define in `pom.xml`:
+```xml
+<properties>
+    <skipTests>true</skipTests>
+</properties>
+```
+
+
+🔟 **How to create a multi-module Maven project?**
+**Answer:**
+A multi-module project has a **parent POM** and multiple **child modules**.
+📌 Parent `pom.xml`:
+```xml
+<modules>
+    <module>module1</module>
+    <module>module2</module>
+</modules>
+```
+
+
+1️⃣1️⃣ **What is a Maven profile?**
+**Answer:**
+Maven **profiles** allow different configurations for different environments (`dev`, `test`, `prod`).
+Example:
+```xml
+<profiles>
+    <profile>
+        <id>dev</id>
+        <properties>
+            <env>development</env>
+        </properties>
+    </profile>
+</profiles>
+```
+📌 Run with:
+```bash
+mvn package -Pdev
+```
+
+
+1️⃣2️⃣ **How do you deploy a Maven project to a remote repository?**
+**Answer:**
+Use the **Maven Deploy Plugin**:
+```xml
+<distributionManagement>
+    <repository>
+        <id>my-repo</id>
+        <url>http://myrepo.com/releases</url>
+    </repository>
+</distributionManagement>
+```
+✅ Deploy using:
+```bash
+mvn deploy
+```
+
+
+1️⃣3️⃣ **What is the difference between `dependencyManagement` and `dependencies`?**
+**Answer:**
+✔️ **`dependencies`** → Declares actual dependencies.
+✔️ **`dependencyManagement`** → Defines dependency versions for child modules but **doesn't include them automatically**.
+
+
+1️⃣4️⃣ **How do you force Maven to update dependencies?**
+**Answer:**
+Run:
+```bash
+mvn clean install -U
+```
+This forces Maven to **update snapshots and re-download dependencies**.
+
+
+==============================
+✨ **END OF DOCUMENT** ✨
+==============================
+

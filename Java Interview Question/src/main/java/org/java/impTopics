@@ -1,0 +1,114 @@
+==========================================
+          🌟 Java Important Questions 🌟
+==========================================
+
+1. 🔹 Object-Oriented Programming (OOP) Principles:
+    ----------------------------------------
+    - Abstraction
+    - Encapsulation
+    - Inheritance
+    - Polymorphism
+
+2. 🔹 Java Memory Management: Done
+    ----------------------------------------
+    - Stack vs Heap
+    - Garbage Collection
+
+3. 🔹 Exception Handling: Done
+    ----------------------------------------
+    - try-catch-finally
+    - Custom exceptions
+    - Checked vs Unchecked exceptions
+
+4. 🔹 Multithreading & Concurrency:
+    ----------------------------------------
+    - Threads
+    - Runnable
+    - Synchronization
+    - Executor Service
+    - Thread safety
+    - Deadlock
+    - Locks (ReentrantLock, ReadWriteLock)
+    - Concurrency utilities in java.util.concurrent:
+        - CountDownLatch, Semaphore, etc.
+
+5. 🔹 Java 8 Features:
+    ----------------------------------------
+    - Lambda expressions
+    - Streams API
+    - Default methods
+    - Functional interfaces
+
+6. 🔹 Access Modifiers: Done
+    ----------------------------------------
+    - public
+    - private
+    - protected
+    - default (package-private)
+
+7. 🔹 Java Collections Framework:
+    ----------------------------------------
+    - List, Set, Map, Queue, and their implementations:
+        - ArrayList, LinkedList, HashSet, TreeSet, HashMap, etc.
+    - Comparison of different Collection types in terms of time complexity:
+        - Lookup, Insert, Delete, etc.
+
+8. 🔹 Generics:
+    ----------------------------------------
+    - Generic methods
+    - Wildcards (? extends, ? super)
+    - Bounded types
+
+9. 🔹 Java I/O and NIO:
+    ----------------------------------------
+    - File handling:
+        - FileReader, FileWriter, BufferedReader, BufferedWriter, etc.
+    - NIO buffers, channels, and selectors
+
+10. 🔹 JVM Internals:
+    ----------------------------------------
+    - Classloading
+    - Just-in-time (JIT) compilation
+    - JVM garbage collector algorithms:
+        - G1, ParallelGC, CMS, ZGC
+    - HotSpot
+
+11. 🔹 Java Performance Tuning:
+    ----------------------------------------
+    - Memory leaks
+    - JVM heap dumps
+    - Profiling
+    - Thread dumps
+
+12. 🔹 Version Control:
+    ----------------------------------------
+    - Git:
+        - Branching
+        - Merging
+        - Rebase
+        - Pull Requests
+
+13. 🔹 Build Tools:
+    ----------------------------------------
+    - Maven
+    - Gradle
+
+14. 🔹 CI/CD:
+    ----------------------------------------
+    - Jenkins
+    - GitLab CI
+    - Travis CI
+
+15. 🔹 String:
+    ----------------------------------------
+    - Memory Use
+    - StringBuilder
+    - StringBuffer
+
+16. 🔹 Interface vs Abstract Class:
+    ----------------------------------------
+    - Difference
+    - Use
+    - Critical Questions
+
+==========================================

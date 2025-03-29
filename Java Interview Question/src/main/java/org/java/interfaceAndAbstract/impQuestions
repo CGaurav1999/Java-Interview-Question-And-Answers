@@ -1,0 +1,110 @@
+
+███████████████████████████████████████████████████████████████████
+📌                JAVA INTERVIEW QUESTIONS & ANSWERS
+███████████████████████████████████████████████████████████████████
+
+═══════════════════════════════════════════════════════════════════
+💡 1️⃣ WHAT IS THE DIFFERENCE BETWEEN AN ABSTRACT CLASS AND AN INTERFACE?
+═══════════════════════════════════════════════════════════════════
+
+┌────────────────────┬─────────────────────────── ──┬─────────────────────────────┐
+│ Feature            │ Abstract Class               │  Interface                  │
+├────────────────────┼───────────────────────────── ┼─────────────────────────────┤
+│ Methods            │ Can have abstract + concrete │ Java 8+: Default, Static, Private │
+│ Variables          │ Any type of variables        │ Only public static final (constants) │
+│ Constructors       │ ✅ Can have constructors     │ ❌ No constructors          │
+│ Multiple Inheritance │ One abstract class         │ Multiple interfaces         │
+│ State              │ ✅ Can maintain state        │ ❌ Cannot maintain state    │
+└────────────────────┴──────────────────────────── ─┴──────────────────────────── ─┘
+
+═══════════════════════════════════════════════════════════════════
+🚀 2️⃣ WHEN TO USE AN INTERFACE?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ Use an interface when:
+✔️ You need to define a **contract** for multiple unrelated classes  
+✔️ You want to **achieve multiple inheritance**  
+✔️ You need to specify **what a class must do**, not how  
+✔️ You want to provide **common functionality** to unrelated classes  
+✔️ You're designing an **API** for third-party implementation  
+
+═══════════════════════════════════════════════════════════════════
+🛠️ 3️⃣ WHEN TO USE AN ABSTRACT CLASS?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ Use an abstract class when:
+✔️ You want to **share code** among closely related classes  
+✔️ You need to declare **non-static or non-final fields**  
+✔️ You need **private or protected members**  
+✔️ You want to provide a **common base implementation**  
+✔️ You need to **define a constructor**  
+
+═══════════════════════════════════════════════════════════════════
+🏗️ 4️⃣ CAN AN ABSTRACT CLASS HAVE A CONSTRUCTOR?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ **YES!**  
+🔹 An **abstract class cannot be instantiated directly**, but its constructors are called when a subclass is instantiated.  
+🔹 Useful for **initializing common state** for all subclasses.  
+
+═══════════════════════════════════════════════════════════════════
+🔗 5️⃣ CAN AN ABSTRACT CLASS IMPLEMENT AN INTERFACE?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ **YES!**  
+🔹 An **abstract class can implement an interface** and provide some or all implementations of its methods.  
+🔹 Any **unimplemented methods remain abstract** and must be implemented by subclasses.  
+
+═══════════════════════════════════════════════════════════════════
+🚫 6️⃣ CAN AN ABSTRACT CLASS BE FINAL?  \033[0m
+═══════════════════════════════════════════════════════════════════
+❌ **NO!**  
+🔹 A **final class cannot be extended**, which contradicts the **purpose of an abstract class**.  
+
+═══════════════════════════════════════════════════════════════════
+🔺 7️⃣ WHAT IS THE DIAMOND PROBLEM? HOW DOES JAVA HANDLE IT?  \033[0m
+═══════════════════════════════════════════════════════════════════
+🔹 The **diamond problem** occurs when a class inherits from two classes that have a **common ancestor**, creating **ambiguity**.  
+
+✅ **Java handles this by:**  
+✔️ Not allowing **multiple inheritance** of classes  
+✔️ Allowing **multiple inheritance** of interfaces  
+✔️ Requiring **classes to override conflicting methods**  
+
+═══════════════════════════════════════════════════════════════════
+🔀 8️⃣ WHAT HAPPENS IF A CLASS IMPLEMENTS TWO INTERFACES WITH THE SAME DEFAULT METHOD?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ The class **must override** the conflicting default method, or it won’t compile.  
+
+📌 The override can:
+✔️ Provide its **own implementation**  
+✔️ Explicitly choose **which interface’s method** to use:  
+   `InterfaceName.super.methodName();`  
+
+═══════════════════════════════════════════════════════════════════
+🛠️ 9️⃣ CAN WE OVERRIDE AN INTERFACE’S DEFAULT METHOD?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ **YES!** A class implementing an interface **can override its default method**, and it **must be public**.  
+
+📌 The overridden method can:
+✔️ Provide a **completely new implementation**  
+✔️ Extend the default implementation → `InterfaceName.super.methodName();`  
+✔️ Be made **abstract** (if inside an abstract class)  
+
+═══════════════════════════════════════════════════════════════════
+🔖 🔟 WHAT ARE MARKER INTERFACES?  \033[0m
+═══════════════════════════════════════════════════════════════════
+✅ **Marker interfaces** are **empty interfaces** (no methods/fields) used to mark a class as having a certain property.  
+
+📌 **Examples:**  
+✔️ `Serializable` → Marks an object as **serializable**  
+✔️ `Cloneable` → Marks an object as **clonable**  
+✔️ `Remote` → Used in **RMI** to mark **remote objects**  
+
+═══════════════════════════════════════════════════════════════════
+📅 1️⃣1️⃣ EVOLUTION OF INTERFACES IN JAVA  \033[0m
+═══════════════════════════════════════════════════════════════════
+
+📌 **Java 8:** Added **default and static methods**  
+📌 **Java 9:** Added **private methods** in interfaces  
+
+███████████████████████████████████████████████████████████████████
+                      🎯 End of Document
+███████████████████████████████████████████████████████████████████
+

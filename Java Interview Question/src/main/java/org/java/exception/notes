@@ -1,0 +1,57 @@
+# 🌟 **Checked vs Unchecked Exceptions in Java** 🌟
+
+There are two types of exceptions:
+1. **✅ Checked Exception**
+2. **❌ Unchecked Exception**
+
+---
+
+### ✅ **1. Checked Exceptions** ✅
+Checked exceptions are exceptions that are checked at **compile-time** by the Java compiler. These exceptions must either be caught or declared.
+
+- **Checked exceptions** are subclasses of `Exception` (but not `RuntimeException`).
+
+#### **Examples of Checked Exceptions:**
+- `IOException`
+- `SQLException`
+- `ClassNotFoundException`
+- `FileNotFoundException`
+- `InterruptedException`
+
+---
+
+### ❌ **2. Unchecked Exceptions** ❌
+Unchecked exceptions are exceptions that are **not checked at compile-time**. These exceptions are also known as **runtime exceptions** because they extend `RuntimeException`, which is a subclass of `Exception`.
+
+#### **Common Unchecked Exceptions:**
+- `NullPointerException`
+- `ArithmeticException`
+- `ArrayIndexOutOfBoundsException`
+- `ClassCastException`
+- `IllegalArgumentException`
+- `IndexOutOfBoundsException`
+
+---
+
+### ⚖️ **Key Differences Between Checked and Unchecked Exceptions:** ⚖️
+
+| **Feature**              | **✅ Checked Exceptions**                                      | **❌ Unchecked Exceptions**                                     |
+|--------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
+| **Type of Exception**     | Subclasses of `Exception`, excluding `RuntimeException`       | Subclasses of `RuntimeException`                              |
+| **Compile-Time Checking** | ✔️ Yes, must be either handled or declared                    | ❌ No, the compiler doesn't check for handling or declaration  |
+| **Handling Requirement**  | ✔️ Must be caught (with try-catch) or declared (with throws)  | ❌ Optional, but can be caught if desired                      |
+| **Examples**              | `IOException`, `SQLException`, `ClassNotFoundException`       | `NullPointerException`, `ArithmeticException`, `IndexOutOfBoundsException` |
+| **Common Use Cases**      | Usually for recoverable conditions (e.g., I/O errors, database issues) | Typically for programming errors or invalid operations (e.g., null dereference) |
+
+---
+
+🔧 **Summary:**
+- **Checked Exceptions**: Force you to handle or declare them, ensuring you consider potential errors that might occur (such as I/O or database issues).
+- **Unchecked Exceptions**: Often result from programming mistakes (such as logic errors), and typically cannot be recovered from.
+
+---
+
+🔔 **Best Practices:**
+- Use **checked exceptions** when you expect a recoverable condition (like an I/O error).
+- Use **unchecked exceptions** for programming errors that should be fixed (like `NullPointerException` or `ArithmeticException`).
+
